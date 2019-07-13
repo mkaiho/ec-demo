@@ -3,32 +3,28 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "demo-app": {
+    "fe-management": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "styl"
-        }
-      },
-      "root": "",
-      "sourceRoot": "src",
+      "schematics": {},
+      "root": "projects/fe-management",
+      "sourceRoot": "projects/fe-management/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/demo-app",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "outputPath": "dist/fe-management",
+            "index": "projects/fe-management/src/index.html",
+            "main": "projects/fe-management/src/main.ts",
+            "polyfills": "projects/fe-management/src/polyfills.ts",
+            "tsConfig": "projects/fe-management/tsconfig.app.json",
             "aot": false,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/fe-management/src/favicon.ico",
+              "projects/fe-management/src/assets"
             ],
             "styles": [
-              "src/styles.styl"
+              "projects/fe-management/src/styles.css"
             ],
             "scripts": []
           },
@@ -36,8 +32,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "projects/fe-management/src/environments/environment.ts",
+                  "with": "projects/fe-management/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -62,33 +58,33 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "demo-app:build"
+            "browserTarget": "fe-management:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "demo-app:build:production"
+              "browserTarget": "fe-management:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "demo-app:build"
+            "browserTarget": "fe-management:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "main": "projects/fe-management/src/test.ts",
+            "polyfills": "projects/fe-management/src/polyfills.ts",
+            "tsConfig": "projects/fe-management/tsconfig.spec.json",
+            "karmaConfig": "projects/fe-management/karma.conf.js",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/fe-management/src/favicon.ico",
+              "projects/fe-management/src/assets"
             ],
             "styles": [
-              "src/styles.styl"
+              "projects/fe-management/src/styles.css"
             ],
             "scripts": []
           }
@@ -97,9 +93,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "projects/fe-management/tsconfig.app.json",
+              "projects/fe-management/tsconfig.spec.json",
+              "projects/fe-management/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -109,16 +105,129 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "demo-app:serve"
+            "protractorConfig": "projects/fe-management/e2e/protractor.conf.js",
+            "devServerTarget": "fe-management:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "demo-app:serve:production"
+              "devServerTarget": "fe-management:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "fe-ec-demo": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/fe-ec-demo",
+      "sourceRoot": "projects/fe-ec-demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/fe-ec-demo",
+            "index": "projects/fe-ec-demo/src/index.html",
+            "main": "projects/fe-ec-demo/src/main.ts",
+            "polyfills": "projects/fe-ec-demo/src/polyfills.ts",
+            "tsConfig": "projects/fe-ec-demo/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/fe-ec-demo/src/favicon.ico",
+              "projects/fe-ec-demo/src/assets"
+            ],
+            "styles": [
+              "projects/fe-ec-demo/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/fe-ec-demo/src/environments/environment.ts",
+                  "with": "projects/fe-ec-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "fe-ec-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "fe-ec-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "fe-ec-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/fe-ec-demo/src/test.ts",
+            "polyfills": "projects/fe-ec-demo/src/polyfills.ts",
+            "tsConfig": "projects/fe-ec-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/fe-ec-demo/karma.conf.js",
+            "assets": [
+              "projects/fe-ec-demo/src/favicon.ico",
+              "projects/fe-ec-demo/src/assets"
+            ],
+            "styles": [
+              "projects/fe-ec-demo/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/fe-ec-demo/tsconfig.app.json",
+              "projects/fe-ec-demo/tsconfig.spec.json",
+              "projects/fe-ec-demo/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/fe-ec-demo/e2e/protractor.conf.js",
+            "devServerTarget": "fe-ec-demo:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "fe-ec-demo:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "demo-app"
+  "defaultProject": "fe-management"
 }
